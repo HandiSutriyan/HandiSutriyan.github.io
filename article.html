@@ -41,13 +41,12 @@
     <script src="js/idb.js"></script>
     <script src="js/db.js"></script>
     <script src="js/register.js"></script>
-
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        var urlParams = new URLSearchParams(window.location.search);
-        var isFromSaved = urlParams.get("saved");
+        let urlParams = new URLSearchParams(window.location.search);
+        let isFromSaved = urlParams.get("saved");
 
-        var save = document.getElementById("save");
+        let save = document.getElementById("save");
 
         if (isFromSaved) {
           // Hide fab jika dimuat dari indexed db
@@ -56,13 +55,13 @@
           // ambil artikel lalu tampilkan
           getSavedArticleById();
         } else {
-          var item = getArticleById();
+          let item = getArticleById();
         }
 
         save.onclick = function() {
           console.log("Tombol FAB di klik.");
-          item.then(function(article) {
-            saveForLater(article);
+          item.then(function(teamData) {
+            simpanTeam(teamData);
           });
         };
       });

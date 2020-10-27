@@ -1,4 +1,4 @@
-const CACHE_NAME = "bolapwa-v2";
+const CACHE_NAME = "bolapwa-v3";
 var urlsToCache = [
   "/",
   "/nav.html",
@@ -17,7 +17,7 @@ var urlsToCache = [
   "/js/script.js",
   "/assets/icon.png",
   "/assets/apple-icon.png",
-  "/assets/favicon.png",
+  "/assets/favicon.ico",
   "https://fonts.googleapis.com/icon?family=Material+Icons"
 ];
 

@@ -38,7 +38,7 @@ function getArticles() {
     caches.match(endPointTeams).then(function (response) {
       if (response) {
         response.json().then(function (data) {
-          var articlesHTML = "";
+          let articlesHTML = "";
           data.teams.forEach(function (article) {
             articlesHTML += `
                   <div class="card">
@@ -68,7 +68,7 @@ function getArticles() {
       // Objek/array JavaScript dari response.json() masuk lewat data.
 
       // Menyusun komponen card artikel secara dinamis
-      var articlesHTML = "";
+      let articlesHTML = "";
       data.teams.forEach(function (article) {
         articlesHTML += `
               <div class="card">
@@ -93,14 +93,14 @@ function getArticles() {
 function getArticleById() {
   return new Promise(function (resolve, reject) {
     // Ambil nilai query parameter (?id=)
-    var urlParams = new URLSearchParams(window.location.search);
-    var idParam = urlParams.get("id");
+    const urlParams = new URLSearchParams(window.location.search);
+    const idParam = urlParams.get("id");
 
     if ("caches" in window) {
       caches.match(base_url + "teams/" + idParam).then(function (response) {
         if (response) {
           response.json().then(function (data) {
-            var articleHTML = `
+            let articleHTML = `
             <div class="card">
               <div class="card-image waves-effect waves-block waves-light">
                 <img src="${data.crestUrl}" />
@@ -125,10 +125,10 @@ function getArticleById() {
       .then(status)
       .then(json)
       .then(function (data) {
-        // Objek JavaScript dari response.json() masuk lewat variabel data.
+        // Objek JavaScript dari response.json() masuk lewat letiabel data.
         // console.log(data);
         // Menyusun komponen card artikel secara dinamis
-        var articleHTML = `
+        let articleHTML = `
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
               <img src="${data.crestUrl}" />
@@ -151,7 +151,7 @@ function getSavedArticles() {
   getAll().then(function (articles) {
     console.log(articles);
     // Menyusun komponen card artikel secara dinamis
-    var articlesHTML = "";
+    let articlesHTML = "";
     articles.forEach(function (article) {
 
       articlesHTML += `
@@ -163,8 +163,7 @@ function getSavedArticles() {
                     </a>
                     <div class="card-content">
                     <a class="btn-floating halfway-fab waves-effect waves-light red" id="deleted" onclick="deletedTeam(${article.id})"><i class="material-icons">delete</i></a>
-                      <span class="card-title truncate">${article.name
-        }</span>
+                      <span class="card-title truncate">${article.name}</span>
                       <p>${article.website}</p>
                     </div>
                   </div>
@@ -176,12 +175,12 @@ function getSavedArticles() {
 }
 
 function getSavedArticleById() {
-  var urlParams = new URLSearchParams(window.location.search);
-  var idParam = urlParams.get("id");
+  let urlParams = new URLSearchParams(window.location.search);
+  let idParam = urlParams.get("id");
 
   getById(idParam).then(function (article) {
     articleHTML = '';
-    var articleHTML = `
+    let articleHTML = `
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
         <img src="${article.crestUrl}" />
