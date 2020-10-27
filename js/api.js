@@ -1,7 +1,5 @@
-// var base_url = "https://readerapi.codepolitan.com/";
-
 const base_url = "https://api.football-data.org/v2/";
-const endPointTeams = `${base_url}competitions/2021/teams`
+const endPointTeams = `${base_url}competitions/2003/teams`
 const fetchData = (url) => {
   return fetch(url, {
     method: "GET",

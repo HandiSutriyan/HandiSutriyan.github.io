@@ -1,4 +1,4 @@
-const CACHE_NAME = "firstpwa-v1";
+const CACHE_NAME = "bolapwa-v2";
 var urlsToCache = [
   "/",
   "/nav.html",
@@ -15,7 +15,9 @@ var urlsToCache = [
   "/js/db.js",
   "/js/idb.js",
   "/js/script.js",
-  "/icon.png",
+  "/assets/icon.png",
+  "/assets/apple-icon.png",
+  "/assets/favicon.png",
   "https://fonts.googleapis.com/icon?family=Material+Icons"
 ];
 

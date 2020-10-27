@@ -1,16 +1,23 @@
 {
-    "name": "African Footbal",
-    "short_name": "African Footbal",
-    "description": "Aplikasi PWA persepakbolaan Benua Afrika",
+    "name": "Meneer Bola",
+    "short_name": "Meneer Bola",
+    "description": "Aplikasi PWA persepakbolaan para meneer di Liga Belanda",
     "start_url": "/index.html",
     "display": "standalone",
-    "background_color": "#00897B",
-    "theme_color": "#00897B",
+    "background_color": "#f39c12",
+    "theme_color": "#f39c12",
     "icons": [
         {
-            "src": "icon.png",
-            "sizes": "512x512",
-            "type": "image/png"
+            "src": "assets/icon.png",
+            "sizes": "200x200",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "assets/apple-icon.png",
+            "sizes": "200x200",
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ]
 }
