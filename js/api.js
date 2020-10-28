@@ -31,7 +31,7 @@ function error(error) {
   // Parameter error berasal dari Promise.reject()
   console.log("Error : " + error);
 }
-
+// Render tabel
 function renderTabel(squad) {
   let tabelHtml='';
   squad.forEach(function(item){
@@ -105,7 +105,7 @@ function getArticles() {
             </div>
             `;
       });
-      // Sisipkan komponen card ke dalam elemen dengan id #content
+      // Sisipkan komponen card ke dalam elemen dengan id #articles
       document.getElementById("preloader").style.display = "none";
       document.getElementById("articles").innerHTML = articlesHTML;
     })
