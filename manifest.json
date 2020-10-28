@@ -2,6 +2,7 @@
     "name": "Meneer Bola",
     "short_name": "Meneer Bola",
     "description": "Aplikasi PWA persepakbolaan para meneer di Liga Belanda",
+    "gcm_sender_id": "196273722426",
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#f39c12",

@@ -1,4 +1,4 @@
-const CACHE_NAME = "bolapwa-v3";
+const CACHE_NAME = "bolapwa-v1";
 var urlsToCache = [
   "/",
   "/nav.html",
@@ -8,6 +8,7 @@ var urlsToCache = [
   "/pages/about.html",
   "/pages/contact.html",
   "/css/materialize.min.css",
+  "/css/custom.css",
   "/js/materialize.min.js",
   "/manifest.json",
   "/js/api.js",
@@ -15,6 +16,9 @@ var urlsToCache = [
   "/js/db.js",
   "/js/idb.js",
   "/js/script.js",
+  "/js/notif.js",
+  "/js/push.js",
+  "/js/register.js",
   "/assets/icon.png",
   "/assets/apple-icon.png",
   "/assets/favicon.ico",
@@ -66,7 +70,6 @@ self.addEventListener("activate", function (event) {
 });
 
 // Menerima Payload Push Notifikasi
-
 self.addEventListener('push', function(event){
   var body;
   if (event.data) {
