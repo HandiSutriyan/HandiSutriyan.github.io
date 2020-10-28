@@ -5,7 +5,7 @@
     "start_url": "/index.html",
     "display": "standalone",
     "background_color": "#f39c12",
-    "theme_color": "#f39c12",
+    "theme_color": "#16697a",
     "icons": [
         {
             "src": "assets/icon.png",
@@ -15,7 +15,7 @@
         },
         {
             "src": "assets/apple-icon.png",
-            "sizes": "200x200",
+            "sizes": "192x192",
             "type": "image/png",
             "purpose": "any maskable"
         }

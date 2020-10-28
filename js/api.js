@@ -179,8 +179,8 @@ function getSavedArticleById() {
   let idParam = urlParams.get("id");
 
   getById(idParam).then(function (article) {
-    articleHTML = '';
-    let articleHTML = `
+    let articleHTML = '';
+    articleHTML = `
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
         <img src="${article.crestUrl}" />

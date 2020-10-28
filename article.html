@@ -28,8 +28,8 @@
 
     <div class="container" id="body-content"></div>
 
-    <div class="fixed-action-btn">
-      <a class="btn-floating btn-large red" id="save">
+    <div class="fixed-action-btn" id="save">
+      <a class="btn-floating btn-large red">
         <i class="large material-icons">save</i>
       </a>
     </div>
@@ -41,12 +41,13 @@
     <script src="js/idb.js"></script>
     <script src="js/db.js"></script>
     <script src="js/register.js"></script>
+    <script src="js/push.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", function() {
-        let urlParams = new URLSearchParams(window.location.search);
-        let isFromSaved = urlParams.get("saved");
+        var urlParams = new URLSearchParams(window.location.search);
+        var isFromSaved = urlParams.get("saved");
 
-        let save = document.getElementById("save");
+        var save = document.getElementById("save");
 
         if (isFromSaved) {
           // Hide fab jika dimuat dari indexed db
@@ -55,13 +56,13 @@
           // ambil artikel lalu tampilkan
           getSavedArticleById();
         } else {
-          let item = getArticleById();
+          var item = getArticleById();
         }
 
         save.onclick = function() {
           console.log("Tombol FAB di klik.");
-          item.then(function(teamData) {
-            simpanTeam(teamData);
+          item.then(function(article) {
+            simpanTeam(article);
           });
         };
       });
