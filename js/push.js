@@ -11,7 +11,7 @@ webPush.setVapidDetails(
    vapidKeys.privateKey
 );
 
-var pushSubscription = {
+const pushSubscription = {
    "endpoint": "https://fcm.googleapis.com/fcm/send/dB4xNQybMFA:APA91bFU-kysZ9rDo860Wm9gGVppjkWQS4K35lRj8OQPTjkH0kK_0kdEgkEnLW59zoBJWWOF0BIJRhQCzIn5AVIo25xY8N4Ff0KBvyRMTWBlfxoMkAVIAfyiKMWxvTCbMY3q1507zfiw",
    "keys": {
        "p256dh": "BJgAOopcYbDOCWFtEZeCbspmKYThdSDs93MqHTeIZTYmSGsTnIyKNlYYQVeodw1bHuPIdFv/uxFpJkxUWkflppk=",
@@ -19,9 +19,9 @@ var pushSubscription = {
    }
 };
 
-var payload = 'Selamat! Aplikasi Anda sudah dapat menerima push notifikasi!';
+const payload = 'Goed gedaan! Meneer sudah dapat menerima push notifikasi!';
 
-var options = {
+const options = {
    gcmAPIKey: '196273722426',
    TTL: 60
 };

@@ -1,4 +1,4 @@
-let dbPromised = idb.open("news-reader", 1, function (upgradeDb) {
+let dbPromised = idb.open("meneer-bola", 1, function (upgradeDb) {
   let teamsObjectStore = upgradeDb.createObjectStore("teams", {
     keyPath: "id"
   });
@@ -51,7 +51,7 @@ function getById(id) {
   });
 }
 
-function deletedTeam(team) {
+function deletedTeam(team, namaTeam) {
   dbPromised
     .then(function (db) {
       let tx = db.transaction("teams", "readwrite");
@@ -61,8 +61,8 @@ function deletedTeam(team) {
       return tx.complete;
     })
     .then(function () {
-      console.log("berhasil di hapus");
-      pushNotif("Berhasil dihapus.");
+      console.log(namaTeam+" berhasil dihapus.");
+      pushNotif(namaTeam+" berhasil dihapus.");
     });
 
   getSavedArticles();

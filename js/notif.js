@@ -26,7 +26,7 @@ const pushNotif = (message) => {
 			registration.showNotification(title, options);
 		});
 	}else {
-		console.error('FItur notifikasi tidak diijinkan.');
+		console.error('Fitur notifikasi tidak diijinkan.');
 	}
 }
 
