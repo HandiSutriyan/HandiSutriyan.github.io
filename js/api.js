@@ -75,6 +75,7 @@ function getArticles() {
                 `;
           });
           // Sisipkan komponen card ke dalam elemen dengan id #content
+          document.getElementById("preloader").style.display = "none";
           document.getElementById("articles").innerHTML = articlesHTML;
         });
       }
@@ -105,6 +106,7 @@ function getArticles() {
             `;
       });
       // Sisipkan komponen card ke dalam elemen dengan id #content
+      document.getElementById("preloader").style.display = "none";
       document.getElementById("articles").innerHTML = articlesHTML;
     })
     .catch(error);
@@ -123,7 +125,7 @@ function getArticleById() {
              let articleHTML = `
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img src="${data.crestUrl}" />
+                  <img src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
                 </div>
                 <div class="card-content">
                   <span class="card-title">${data.name}</span>
@@ -144,6 +146,7 @@ function getArticleById() {
               </div>
             `;
             // Sisipkan komponen card ke dalam elemen dengan id #content
+            document.getElementById("preloader").style.display = "none";
             document.getElementById("body-content").innerHTML = articleHTML;
             renderTabel(data.squad);
             // Kirim objek data hasil parsing json agar bisa disimpan ke indexed db
@@ -161,7 +164,7 @@ function getArticleById() {
         let articleHTML = `
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img src="${data.crestUrl}" />
+              <img src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
             </div>
             <div class="card-content">
               <span class="card-title">${data.name}</span>
@@ -182,6 +185,7 @@ function getArticleById() {
           </div>
         `;
         // Sisipkan komponen card ke dalam elemen dengan id #content
+        document.getElementById("preloader").style.display = "none";
         document.getElementById("body-content").innerHTML = articleHTML;
         renderTabel(data.squad);
         // Kirim objek data hasil parsing json agar bisa disimpan ke indexed db
@@ -213,6 +217,7 @@ function getSavedArticles() {
                 `;
     });
     // Sisipkan komponen card ke dalam elemen dengan id #body-content
+    document.getElementById("preloader").style.display = "none";
     document.getElementById("body-content").innerHTML = articlesHTML;
   });
 }
@@ -226,7 +231,7 @@ function getSavedArticleById() {
     articleHTML = `
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img src="${team.crestUrl}" />
+              <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" />
             </div>
             <div class="card-content">
               <span class="card-title">${team.name}</span>
@@ -247,6 +252,7 @@ function getSavedArticleById() {
           </div>
   `;
     // Sisipkan komponen card ke dalam elemen dengan id #content
+    document.getElementById("preloader").style.display = "none";
     document.getElementById("body-content").innerHTML = articleHTML;
     renderTabel(team.squad);
   });
