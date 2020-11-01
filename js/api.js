@@ -61,7 +61,7 @@ function getTeams() {
             teamHTML += `
                 <div class="col s12 m6 6" >
                   <div class="card">
-                    <a href="./article.html?id=${teamData.id}">
+                    <a href="./detail.html?id=${teamData.id}">
                       <div class="card-image waves-effect waves-block waves-light">
                         <img src="${teamData.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${teamData.name}"/>
                       </div>
@@ -92,7 +92,7 @@ function getTeams() {
         teamHTML += `
              <div class="col s12 m6 6" >
               <div class="card">
-                <a href="./article.html?id=${team.id}">
+                <a href="./detail.html?id=${team.id}">
                   <div class="card-image waves-effect waves-block waves-light">
                     <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${team.name}"/>
                   </div>
@@ -204,7 +204,7 @@ function getSavedTeams() {
       teamHTML += `
                 <div class="col s12 m6 6" >
                   <div class="card">
-                    <a href="./article.html?id=${team.id}&saved=true">
+                    <a href="./detail.html?id=${team.id}&saved=true">
                       <div class="card-image waves-effect waves-block waves-light">
                         <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${team.name}"/>
                       </div>

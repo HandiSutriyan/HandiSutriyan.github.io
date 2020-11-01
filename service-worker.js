@@ -3,7 +3,7 @@ var urlsToCache = [
   "/",
   "/nav.html",
   "/index.html",
-  "/article.html",
+  "/detail.html",
   "/pages/home.html",
   "/pages/about.html",
   "/pages/contact.html",
