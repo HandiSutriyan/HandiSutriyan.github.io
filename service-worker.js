@@ -20,6 +20,7 @@ var urlsToCache = [
   "/js/push.js",
   "/js/register.js",
   "/assets/icon.png",
+  "/assets/icon512.png",
   "/assets/apple-icon.png",
   "/assets/favicon.ico",
   "https://fonts.googleapis.com/icon?family=Material+Icons"
@@ -90,3 +91,4 @@ self.addEventListener('push', function(event){
     self.registration.showNotification('Push Notifikasi', options)
     );
 });
+

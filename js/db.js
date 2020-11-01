@@ -17,8 +17,8 @@ function simpanTeam(team) {
       return tx.complete;
     })
     .then(function () {
-      console.log("Tim favorit berhasil di simpan.");
-      pushNotif("Tim favorit berhasil di simpan.");
+      console.log(team.name+" berhasil di simpan.");
+      pushNotif( team.name+" berhasil di simpan.");
     });
 }
 
@@ -65,7 +65,7 @@ function deletedTeam(team, namaTeam) {
       pushNotif(namaTeam+" berhasil dihapus.");
     });
 
-  getSavedArticles();
+  getSavedTeams();
 }
 
 

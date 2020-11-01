@@ -51,24 +51,24 @@ function renderTabel(squad) {
 }
 
 // Blok kode untuk melakukan request data json
-function getArticles() {
+function getTeams() {
   if ("caches" in window) {
     caches.match(endPointTeams).then(function (response) {
       if (response) {
         response.json().then(function (data) {
-          let articlesHTML = "";
-          data.teams.forEach(function (article) {
-            articlesHTML += `
+          let teamHTML = "";
+          data.teams.forEach(function (teamData) {
+            teamHTML += `
                 <div class="col s12 m6 6" >
                   <div class="card">
-                    <a href="./article.html?id=${article.id}">
+                    <a href="./article.html?id=${teamData.id}">
                       <div class="card-image waves-effect waves-block waves-light">
-                        <img src="${article.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                        <img src="${teamData.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${teamData.name}"/>
                       </div>
                     </a>
                     <div class="card-content">
-                      <span class="card-title truncate">${article.name}</span>
-                      <p>${article.address}</p>
+                      <span class="card-title truncate">${teamData.name}</span>
+                      <p>${teamData.address}</p>
                     </div>
                   </div>
                 </div>
@@ -76,7 +76,7 @@ function getArticles() {
           });
           // Sisipkan komponen card ke dalam elemen dengan id #content
           document.getElementById("preloader").style.display = "none";
-          document.getElementById("articles").innerHTML = articlesHTML;
+          document.getElementById("articles").innerHTML = teamHTML;
         });
       }
     });
@@ -87,14 +87,14 @@ function getArticles() {
     .then(json)
     .then(function (data) {
       // Menyusun komponen card artikel secara dinamis
-      let articlesHTML = "";
+      let teamHTML = "";
       data.teams.forEach(function (team) {
-        articlesHTML += `
+        teamHTML += `
              <div class="col s12 m6 6" >
               <div class="card">
                 <a href="./article.html?id=${team.id}">
                   <div class="card-image waves-effect waves-block waves-light">
-                    <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                    <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${team.name}"/>
                   </div>
                 </a>
                 <div class="card-content">
@@ -107,12 +107,12 @@ function getArticles() {
       });
       // Sisipkan komponen card ke dalam elemen dengan id #articles
       document.getElementById("preloader").style.display = "none";
-      document.getElementById("articles").innerHTML = articlesHTML;
+      document.getElementById("articles").innerHTML = teamHTML;
     })
     .catch(error);
 }
 
-function getArticleById() {
+function getTeamById() {
   return new Promise(function (resolve, reject) {
     // Ambil nilai query parameter (?id=)
     const urlParams = new URLSearchParams(window.location.search);
@@ -125,7 +125,7 @@ function getArticleById() {
              let articleHTML = `
               <div class="card">
                 <div class="card-image waves-effect waves-block waves-light">
-                  <img src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                  <img src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${data.name}"/>
                 </div>
                 <div class="card-content">
                   <span class="card-title">${data.name}</span>
@@ -164,7 +164,7 @@ function getArticleById() {
         let articleHTML = `
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+              <img src="${data.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${data.name}"/>
             </div>
             <div class="card-content">
               <span class="card-title">${data.name}</span>
@@ -194,35 +194,47 @@ function getArticleById() {
   });
 }
 
-function getSavedArticles() {
+function getSavedTeams() {
   getAll().then(function (teams) {
-    console.log(teams);
     // Menyusun komponen card artikel secara dinamis
-    let articlesHTML = "";
-    teams.forEach(function (team) {
+    let teamHTML = "";
+    if(teams.length != 0) {
+      teams.forEach(function (team) {
 
-      articlesHTML += `
+      teamHTML += `
+                <div class="col s12 m6 6" >
                   <div class="card">
                     <a href="./article.html?id=${team.id}&saved=true">
                       <div class="card-image waves-effect waves-block waves-light">
-                        <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+                        <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${team.name}"/>
                       </div>
                     </a>
                     <div class="card-content">
-                      <a class="btn-floating halfway-fab waves-effect waves-light red" id="deleted" onclick="deletedTeam(${team.id}, '${team.name}')"><i class="material-icons">delete</i></a>
+                      <a class="btn-floating halfway-fab waves-effect waves-light red" id="deleted" onclick="deletedTeam(${team.id}, '${team.name.split("'")[0]}')"><i class="material-icons">delete</i></a>
                       <span class="card-title truncate">${team.name}</span>
                       <p>${team.website}</p>
                     </div>
                   </div>
+                </div>
                 `;
-    });
+      });
+    }else{
+      teamHTML = `
+                  <div class="col 12">
+                    <h2 class="flow-text  grey-text">Oeps! Tidak ada tim favorit yang Anda simpan.</h2>
+                    <a href="./index.html" class="waves-effect waves-light light-blue darken-2 btn">
+                    Silakan pilih tim kesukaan Anda</a>
+                    </p>
+                  </div>
+      `
+    }
     // Sisipkan komponen card ke dalam elemen dengan id #body-content
     document.getElementById("preloader").style.display = "none";
-    document.getElementById("body-content").innerHTML = articlesHTML;
+    document.getElementById("body-saved-content").innerHTML = teamHTML;
   });
 }
 
-function getSavedArticleById() {
+function getSavedTeamById() {
   let urlParams = new URLSearchParams(window.location.search);
   let idParam = urlParams.get("id");
 
@@ -231,7 +243,7 @@ function getSavedArticleById() {
     articleHTML = `
           <div class="card">
             <div class="card-image waves-effect waves-block waves-light">
-              <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" />
+              <img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" alt="${team.name}"/>
             </div>
             <div class="card-content">
               <span class="card-title">${team.name}</span>
