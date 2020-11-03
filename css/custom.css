@@ -19,3 +19,7 @@
 	flex-direction: column;
 	align-items: center;
 }
+
+.nav-wrapper {
+	overflow: hidden;
+}
